@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">E-Ramo Task</string>
+    <string name="posts">Posts</string>
+    <string name="post_details">Post details</string>
+    <string name="title">Title:</string>
+    <string name="description">Description:</string>
+</resources>
