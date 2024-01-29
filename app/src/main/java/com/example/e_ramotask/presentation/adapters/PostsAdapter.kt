@@ -51,7 +51,7 @@ class PostsAdapter(private val listener: PostsNavigator) :
         holder.itemBinding.descriptionId.text = item.body
 
         holder.itemBinding.cardItemID.setOnClickListener {
-            listener.onClickPostItem(item.id)
+            listener.onItemClick(item.id)
         }
 
     }
