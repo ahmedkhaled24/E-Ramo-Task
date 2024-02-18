@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.e_ramotask.data.model.response.GetPostsResponse
+import com.example.e_ramotask.data.model.response.Posts
 import com.example.e_ramotask.domain.usecases.PostsUseCase
 import com.example.e_ramotask.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class PostsViewModel @Inject constructor(private val postsUseCase: PostsUseCase) : ViewModel() {
 
     private val _postsState: MutableLiveData<Resource<MutableList<GetPostsResponse>>> = MutableLiveData()
-    val postsData: LiveData<Resource<MutableList<GetPostsResponse>>> = _postsState
+    val postsData: LiveData<Resource<Posts>> = _postsState
 
     fun postsData() {
         viewModelScope.launch {

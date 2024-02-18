@@ -83,4 +83,8 @@ dependencies {
 
     //PhotoView
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
+    //leakcanary
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:3.0-alpha-1'
+
 }

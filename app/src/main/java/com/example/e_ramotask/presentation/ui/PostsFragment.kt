@@ -20,15 +20,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class PostsFragment : Fragment(), PostsNavigator {
 
-    private lateinit var binding: FragmentPostsBinding
+    private var _binding: FragmentPostsBinding? = null
+    private val binding get() = _binding!!
+
     private val postsViewModel: PostsViewModel by viewModels()
-    private lateinit var postsAdapter: PostsAdapter
+    private var _postsAdapter: PostsAdapter? = null
+    private val postsAdapter: PostsAdapter get() = _postsAdapter!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_posts, container, false)
+        _binding = FragmentPostsBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -64,7 +67,7 @@ class PostsFragment : Fragment(), PostsNavigator {
 
 
     private fun setUpRecyclerPostsData() {
-        postsAdapter = PostsAdapter(this)
+        _postsAdapter = PostsAdapter(this)
         binding.postsRecyclerView.adapter = postsAdapter
     }
 
@@ -82,4 +85,10 @@ class PostsFragment : Fragment(), PostsNavigator {
         findNavController().navigate(PostsFragmentDirections.actionPostsFragmentToPostDetailsFragment(id))
     }
 
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+        _postsAdapter = null
+    }
 }
